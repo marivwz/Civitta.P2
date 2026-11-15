@@ -43,7 +43,7 @@ O CIVITTA é uma plataforma de **zeladoria colaborativa**: permite que moradores
 
 1. Baixe o projeto (`.zip`) ou clone o repositório:
    ```bash
-   git clone https://github.com/marivwz/civitta.git
+   git clone https://github.com/marivwz/civitta---P2.git
    ```
 2. Abra a pasta do projeto no **VS Code**.
 3. Instale a extensão **Live Server**, se ainda não tiver.
