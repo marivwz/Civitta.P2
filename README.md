@@ -60,7 +60,7 @@ civitta/
 ├── sobre.html          Problema, ODS 11, modelo de impacto e privacidade
 ├── js/
 |└── app.js              Toda a lógica (log, validação, CRUD e eventos)
-├── css/
+├── estilos/
 │   └── style.css       Estilos (Mobile First)
 ├── img/
 │   ├── Logo.png        Logo do CIVITTA
