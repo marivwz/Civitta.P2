@@ -1,4 +1,10 @@
+/* ==========================================================
+   CIVITTA - Estilos (Mobile First)
+   Ordem: 1) variáveis  2) base  3) componentes  4) páginas
+          5) media queries (tablet 768px e desktop 992px)
+   ========================================================== */
 
+/* 1) VARIÁVEIS: paleta da marca */
 :root {
   --navy: #1822A0;
   --indigo: #3638B8;
@@ -6,19 +12,20 @@
   --lavanda: #7363E7;
   --lilas: #9178FF;
   --branco: #FFFFFF;
-  --texto: #262847;          
-  --raio: 1rem;                   
+  --texto: #262847;               /* cor de texto corrido, mais suave que o azul-marinho */
+  --raio: 1rem;                   /* cantos arredondados, como na logo */
   --borda: 1px solid rgba(85, 77, 208, 0.22);
 
+  /* Ajusta as cores padrão do Bootstrap para a paleta */
   --bs-body-font-family: "Outfit", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --bs-body-color: var(--texto);
   --bs-link-color: var(--violeta);
   --bs-link-hover-color: var(--navy);
 }
 
-
+/* 2) BASE */
 body {
-  display: flex;                 
+  display: flex;                  /* rodapé sempre no fim da tela */
   flex-direction: column;
   min-height: 100vh;
   font-family: var(--bs-body-font-family);
@@ -27,6 +34,12 @@ body {
 
 main {
   flex: 1;
+}
+
+/* Nenhuma imagem passa da largura do container */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
 h1, h2, h3, h4, .navbar-brand {
@@ -39,22 +52,31 @@ h2 {
   margin-bottom: 0.75rem;
 }
 
-
+/* Foco visível para navegação por teclado */
 :focus-visible {
   outline: 3px solid var(--lilas);
   outline-offset: 2px;
 }
 
+/* 3) COMPONENTES */
 
+/* Navbar */
 .navbar {
   background: var(--branco);
   border-bottom: var(--borda);
 }
 
+.navbar-brand {
+  margin-right: 0;
+  padding: 0;
+}
+
+/* Logo: a largura define o tamanho e a altura acompanha (sem distorcer) */
 .navbar-brand img {
   display: block;
-  height: 2rem;
-  width: auto;
+  width: 7.5rem;                  /* celular */
+  max-width: 100%;
+  height: auto;
 }
 
 .navbar .nav-link {
@@ -67,6 +89,7 @@ h2 {
   font-weight: 600;
 }
 
+/* Botões Bootstrap na cor da marca */
 .btn-primary {
   --bs-btn-bg: var(--violeta);
   --bs-btn-border-color: var(--violeta);
@@ -87,15 +110,16 @@ h2 {
 }
 
 .btn {
-  border-radius: 999px;           
+  border-radius: 999px;           /* botões em formato de pílula */
 }
 
+/* Cards */
 .card {
   border: var(--borda);
   border-radius: var(--raio);
 }
 
-
+/* Rodapé */
 footer {
   margin-top: 3rem;
   border-top: var(--borda);
@@ -103,7 +127,9 @@ footer {
   font-size: 0.9rem;
 }
 
+/* 4) PÁGINAS */
 
+/* --- index: destaque inicial --- */
 .hero {
   color: var(--branco);
   background: linear-gradient(135deg, var(--navy) 0%, var(--indigo) 55%, var(--violeta) 100%);
@@ -137,10 +163,10 @@ footer {
   outline-color: var(--branco);
 }
 
-
+/* --- ocorrências: formulário em Grid --- */
 #form-ocorrencia {
   display: grid;
-  grid-template-columns: 1fr;    
+  grid-template-columns: 1fr;     /* celular: uma coluna */
   gap: 1rem;
   padding: 1.25rem;
   border: var(--borda);
@@ -151,7 +177,7 @@ footer {
 .aviso-privacidade,
 .mensagem,
 #form-ocorrencia > .d-flex {
-  grid-column: 1 / -1;           
+  grid-column: 1 / -1;            /* ocupa a linha inteira */
 }
 
 .aviso-privacidade {
@@ -167,7 +193,7 @@ footer {
   color: var(--bs-danger-text-emphasis);
 }
 
-
+/* Mensagem geral do formulário (JS adiciona .sucesso ou .erro) */
 .mensagem:empty {
   display: none;
 }
@@ -189,6 +215,7 @@ footer {
   border-left: 4px solid var(--bs-danger);
 }
 
+/* --- ocorrências: lista em Grid --- */
 #lista-ocorrencias {
   display: grid;
   grid-template-columns: 1fr;
@@ -202,6 +229,7 @@ footer {
   border-radius: 0.75rem;
 }
 
+/* Status: JS define data-status na <article> (aberta | andamento | resolvida) */
 .ocorrencia {
   border-left: 6px solid var(--lilas);
 }
@@ -214,7 +242,7 @@ footer {
   border-left-color: var(--navy);
 }
 
-
+/* --- ocorrências: painel de log --- */
 .log-lista {
   display: flex;
   flex-direction: column;
@@ -234,23 +262,29 @@ footer {
   border-radius: 0 0.5rem 0.5rem 0;
 }
 
+.log-lista li[data-resultado="erro"] {
+  border-left-color: var(--bs-danger);
+}
 
+/* 5) MEDIA QUERIES */
+
+/* Tablet (a partir de 768px) */
 @media (min-width: 768px) {
   h2 {
     font-size: 1.75rem;
   }
 
   .navbar-brand img {
-    height: 2.5rem;
+    width: 9rem;                   /* tablet */
   }
 
   .hero .container {
-    padding-top: 4rem !important;    
+    padding-top: 4rem !important;     /* sobrescreve py-5 do Bootstrap */
     padding-bottom: 4rem !important;
   }
 
   #form-ocorrencia {
-    grid-template-columns: 1fr 1fr;   
+    grid-template-columns: 1fr 1fr;   /* tipo e local lado a lado */
     padding: 1.75rem;
   }
 
@@ -259,19 +293,26 @@ footer {
   }
 }
 
+/* Desktop (a partir de 992px) */
 @media (min-width: 992px) {
+  .navbar-brand img {
+    width: 10.5rem;                /* desktop */
+  }
+
   .hero .container {
     padding-top: 6rem !important;
     padding-bottom: 6rem !important;
   }
 
-.painel-log {
+  /* Painel de log acompanha a rolagem ao lado da lista */
+  .painel-log {
     position: sticky;
     top: 1rem;
     align-self: flex-start;
   }
 }
 
+/* Respeita quem prefere menos movimento */
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
