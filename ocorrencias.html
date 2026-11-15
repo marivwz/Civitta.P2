@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Relate, acompanhe, edite e remova ocorrências em espaços públicos.">
+  <title>Ocorrências | CIVITTA</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <a class="visually-hidden-focusable" href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <nav class="navbar navbar-expand-md" aria-label="Navegação principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html">CIVITTA</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menu-principal" aria-controls="menu-principal"
+                aria-expanded="false" aria-label="Abrir menu">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="menu-principal">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Início</a></li>
+            <li class="nav-item"><a class="nav-link active" href="ocorrencias.html" aria-current="page">Ocorrências</a></li>
+            <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="conteudo" class="container py-4">
+
+    <h1>Ocorrências</h1>
+
+    <section aria-labelledby="titulo-formulario">
+      <h2 id="titulo-formulario">Relatar uma ocorrência</h2>
+
+      <form id="form-ocorrencia" novalidate>
+        <input type="hidden" id="ocorrencia-id" name="id">
+
+        <div class="mb-3">
+          <label for="tipo" class="form-label">Tipo de problema</label>
+          <select id="tipo" name="tipo" class="form-select" required aria-describedby="erro-tipo">
+            <option value="">Selecione...</option>
+            <option value="buraco">Buraco ou calçada danificada</option>
+            <option value="iluminacao">Iluminação queimada</option>
+            <option value="lixo">Lixo ou entulho acumulado</option>
+            <option value="praca">Praça ou parque danificado</option>
+            <option value="outro">Outro</option>
+          </select>
+          <div id="erro-tipo" class="erro-campo" role="alert"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="local" class="form-label">Local (rua ou bairro)</label>
+          <input type="text" id="local" name="local" class="form-control"
+                 required minlength="3" maxlength="80" autocomplete="off"
+                 placeholder="Ex.: Praça central, Rua das Flores"
+                 aria-describedby="erro-local">
+          <div id="erro-local" class="erro-campo" role="alert"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="descricao" class="form-label">Descrição</label>
+          <textarea id="descricao" name="descricao" class="form-control" rows="4"
+                    required minlength="10" maxlength="300"
+                    placeholder="Descreva o problema com poucas palavras"
+                    aria-describedby="erro-descricao"></textarea>
+          <div id="erro-descricao" class="erro-campo" role="alert"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="status" class="form-label">Status</label>
+          <select id="status" name="status" class="form-select" required aria-describedby="erro-status">
+            <option value="aberta" selected>Aberta</option>
+            <option value="andamento">Em andamento</option>
+            <option value="resolvida">Resolvida</option>
+          </select>
+          <div id="erro-status" class="erro-campo" role="alert"></div>
+        </div>
+
+        <p class="aviso-privacidade">
+          Aviso de privacidade: não informe nome, CPF, telefone ou endereço pessoal.
+          O CIVITTA usa apenas dados fictícios e coleta somente o necessário para registrar a ocorrência.
+        </p>
+
+        <div id="mensagem-formulario" class="mensagem" role="status" aria-live="polite"></div>
+
+        <div class="d-flex gap-2">
+          <button type="submit" id="botao-salvar" class="btn btn-primary">Salvar ocorrência</button>
+          <button type="button" id="botao-cancelar" class="btn btn-outline-secondary" hidden>Cancelar edição</button>
+        </div>
+      </form>
+    </section>
+
+    <div class="row g-4 mt-2">
+
+      <!-- LISTA DE OCORRÊNCIAS (listar, editar e remover) -->
+      <section class="col-12 col-lg-8" aria-labelledby="titulo-lista">
+        <h2 id="titulo-lista">Ocorrências registradas</h2>
+        <p id="mensagem-vazia">Nenhuma ocorrência registrada ainda. Use o formulário acima para relatar a primeira.</p>
+        <div id="lista-ocorrencias" aria-live="polite"></div>
+      </section>
+
+      <!-- PAINEL DE REGISTRO DE ATIVIDADES -->
+      <aside class="col-12 col-lg-4" aria-labelledby="titulo-log">
+        <h2 id="titulo-log">Registro de atividades</h2>
+        <p id="log-vazio">Nenhuma atividade registrada.</p>
+        <ol id="log-atividades" class="log-lista"></ol>
+      </aside>
+
+    </div>
+    <template id="modelo-ocorrencia">
+      <article class="card ocorrencia mb-3">
+        <div class="card-body">
+          <h3 class="card-title h5 ocorrencia-tipo"></h3>
+          <p class="mb-1"><strong>Local:</strong> <span class="ocorrencia-local"></span></p>
+          <p class="mb-1"><strong>Status:</strong> <span class="ocorrencia-status"></span></p>
+          <p class="ocorrencia-descricao"></p>
+          <p class="small mb-3">Registrada em <time class="ocorrencia-data"></time></p>
+          <div class="d-flex gap-2">
+            <button type="button" class="btn btn-sm btn-outline-primary botao-editar">Editar</button>
+            <button type="button" class="btn btn-sm btn-outline-danger botao-remover">Remover</button>
+          </div>
+        </div>
+      </article>
+    </template>
+
+  </main>
+
+  <footer class="container py-4">
+    <p class="mb-0">CIVITTA &copy; 2026. Projeto acadêmico de Desenvolvimento Web I, com dados fictícios.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/log.js"></script>
+  <script src="../js/validacao.js"></script>
+  <script src="../js/ocorrencias.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
