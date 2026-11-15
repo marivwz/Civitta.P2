@@ -91,8 +91,6 @@ Cada ocorrência guarda apenas os campos abaixo:
 
 ## Prints das telas
 
-Salve os prints na pasta `img/prints/` com os nomes abaixo.
-
 | Tela | Print |
 | ---- | ----- |
 | Página inicial (desktop) | ![Página inicial no desktop](img/prints/desktopinicio.png) |
