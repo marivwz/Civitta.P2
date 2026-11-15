@@ -4,9 +4,7 @@
 
 Protótipo funcional de uma solução de **Tecnologia Cidadã** para a avaliação P2 de Desenvolvimento Web I.
 
-**Autora:** [seu nome completo]
-**Repositório:** https://github.com/marivwz/civitta
-**Site publicado (opcional):** [link do GitHub Pages, se você publicar]
+**Repositório:** https://github.com/marivwz/civitta---P2
 
 ---
 
@@ -21,7 +19,7 @@ O CIVITTA é uma plataforma de **zeladoria colaborativa**: permite que moradores
 
 - **Quem é o cidadão afetado?** Moradores que utilizam espaços públicos diariamente.
 - **Qual é o problema?** Problemas urbanos nem sempre são comunicados ou acompanhados de maneira organizada.
-- **Que evidência o comprova?** Observação da cidade e do bairro onde a autora mora.
+- **Que evidência o comprova?** Observação da cidade e do bairro onde a desenvolvedora mora.
 
 ## Funcionalidades
 
@@ -70,8 +68,6 @@ civitta/
 └── README.md
 ```
 
-> Ajuste este bloco se o seu `app.js` estiver em outra pasta (por exemplo, `js/app.js`).
-
 ## Modelo de dados
 
 Cada ocorrência guarda apenas os campos abaixo:
@@ -99,14 +95,12 @@ Salve os prints na pasta `img/prints/` com os nomes abaixo.
 
 | Tela | Print |
 | ---- | ----- |
-| Página inicial (desktop) | ![Página inicial no desktop](img/prints/inicio-desktop.png) |
-| Página inicial (celular) | ![Página inicial no celular](img/prints/inicio-celular.png) |
-| Ocorrências (desktop) | ![Ocorrências no desktop](img/prints/ocorrencias-desktop.png) |
-| Ocorrências (tablet) | ![Ocorrências no tablet](img/prints/ocorrencias-tablet.png) |
-| Ocorrências (celular) | ![Ocorrências no celular](img/prints/ocorrencias-celular.png) |
-| Erros de validação | ![Erros de validação do formulário](img/prints/validacao-erros.png) |
-| Lista e painel de atividades | ![Lista de ocorrências e painel de atividades](img/prints/lista-e-log.png) |
-| Página Sobre | ![Página Sobre](img/prints/sobre.png) |
+| Página inicial (desktop) | ![Página inicial no desktop](img/prints/desktopinicio.png) |
+| Página inicial (celular) | ![Página inicial no celular](img/prints/celularinicio.png) |
+| Página inicial (tablet) | ![Página inicial no tablet](img/prints/tabletinicio.png) |
+| Ocorrências (desktop) | ![Ocorrências no desktop](img/prints/desktopocorrencias.png) |
+| Ocorrências (celular) | ![Ocorrências no celular](img/prints/celularocorrencias.png) |
+| Página Sobre | ![Página Sobre](img/prints/desktopsobre.png) |
 
 ## Testes realizados
 
@@ -119,9 +113,5 @@ Salve os prints na pasta `img/prints/` com os nomes abaixo.
 - Os dados ficam apenas no navegador de quem usa (`localStorage`); não há servidor nem banco de dados.
 - Não há login nem envio real das ocorrências a um órgão público.
 - Todos os dados são fictícios e o projeto é um protótipo acadêmico.
-
-## Declaração de uso de IA
-
-[Ajuste este texto ao que realmente aconteceu.] Utilizei o assistente de IA Claude, da Anthropic, como apoio no desenvolvimento: sugestão da estrutura de páginas e do modelo de dados, geração de código-base em HTML, CSS e JavaScript e revisão. O código foi testado, adaptado e compreendido por mim.
 
 Bibliotecas de terceiros: [Bootstrap 5.3](https://getbootstrap.com/) e a fonte [Outfit](https://fonts.google.com/specimen/Outfit), ambas carregadas por CDN.
