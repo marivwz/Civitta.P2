@@ -102,7 +102,7 @@ Cada ocorrência guarda apenas os campos abaixo:
 
 ## Testes realizados
 
-- **Larguras de tela:** celular (375px), tablet (768px) e desktop (1280px), pelo DevTools do navegador.
+- **Larguras de tela:** celular (Iphone 16), tablet (Ipad Mini) e desktop (1280 px) pelo DevTools do navegador.
 - **Entradas inválidas:** formulário vazio, local com poucos caracteres, descrição acima de 300 caracteres e texto com `<script>`.
 - **Operações:** adicionar, editar, remover e recarregar a página.
 
